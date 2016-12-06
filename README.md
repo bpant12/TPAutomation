@@ -11,6 +11,7 @@ This is a complete Selenium automation framework in Java which is capable to aut
 ## Requirements:
 
  - Java VM >= 1.6.0
+ - OS: Windows/Linux
  
 ## Installation & Usage:
     
