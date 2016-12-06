@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!--
+   | log4j-agent.xml
+   |
+   | For more configuration infromation and examples see the Jakarta Log4j
+   | website: http://jakarta.apache.org/log4j
+ -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+    <appender name="SF_UTIL_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="logs/SF_Automation.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="20MB"/>
+        <param name="MaxBackupIndex" value="1000"/>
+        <param name="Threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}][%-5p][%c{1}][%L] %m%n"/>
+        </layout>
+    </appender>
+    <appender name="NullAppender" class="org.apache.log4j.varia.NullAppender"></appender>
+    <appender name="AGENTFILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="logs/agent.log"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="500KB"/>
+        <param name="MaxBackupIndex" value="1"/>
+        <param name="Threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%t][%c] %m%n"/>
+        </layout>
+    </appender>
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- The default pattern: Date Priority [Category] Message\n -->
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+        </layout>
+    </appender>
+    <!-- Buffer events and log them asynchronously -->
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="AGENTFILE"/>
+    </appender>
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="SF_UTIL_LOG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>
