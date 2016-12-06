@@ -15,8 +15,8 @@ This is a complete Selenium automation framework in Java which is capable to aut
  
 ## Installation & Usage:
     
-    $ git clone https://github.com/bpant12/GoEuroAutomation.git
-    $ cd uiautomation
+    $ git clone https://github.com/bpant12/TPAutomation.git
+    $ cd TPAutomation
     $ mvn clean compile test -Denv=<Enviornment> -Dtestngpath=<TestNG Xml File> -Ptestng-tests	
 
 NOTE: To run sample test case use following commnd
